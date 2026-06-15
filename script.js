@@ -1,5 +1,5 @@
 const SUPABASE_URL = "https://supabase.co";
-const SUPABASE_ANON_KEY = "your-actual-long-anon-public-key";
+const SUPABASE_ANON_KEY = "sb_publishable_31VgpuLiZG2dbm0mWofi-g_RyZZ76WG";
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 async function loadData() {
