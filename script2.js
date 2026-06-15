@@ -1,29 +1,17 @@
-const SUPABASE_URL = "https://supabase.co";
-const SUPABASE_ANON_KEY = "your-actual-long-anon-public-key";
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 async function sendData() {
-    const myData = {
-      PI:3.14159
-    };
-
     try {
-        const response = await fetch('script.js', {
-            method: 'POST', 
-            headers: {
-                'Content-Type': 'application/json' 
-            },
-            body: JSON.stringify(myData) 
-        });
+        const { data, error } = await supabase
+            .from('server2016')
+            .insert([
+                { custom_column: '1' } 
+            ]);
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+        if (error) throw error;
+        
+        console.log('Successfully saved data to Supabase cloud!');
 
-        const result = await response.json();
-        console.log('Success:', result);
-
-    } catch (error) {
-        console.error('Error sending data:', error);
+    } catch (err) {
+        console.error('Error sending data:', err.message);
     }
 }
 
