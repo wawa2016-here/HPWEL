@@ -1,3 +1,9 @@
+const { data, error } = await supabase
+    .from('server2016') // Put your custom table name here
+    .insert([
+        { custom_column: 'value' }
+    ]);
+
 async function sendData() {
     const myData = {
       PI:3.14159
