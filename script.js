@@ -1,20 +1,22 @@
-const { data, error } = await supabase
-    .from('server2016')
-    .insert([
-        { custom_column: 'value' }
-    ]);
-fetch('script2.js')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json(); 
-    })
-    .then(data => {
-        console.log(data);
+const SUPABASE_URL = "https://supabase.co";
+const SUPABASE_ANON_KEY = "your-actual-long-anon-public-key";
+const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+async function loadData() {
+    try {
+        const { data, error } = await supabase
+            .from('YOUR_CUSTOM_NAME_HERE') 
+            .select('*');                 
+
+        if (error) throw error;
         
         document.getElementById("wait").innerHTML = " " + JSON.stringify(data) + " "; 
-    })
-    .catch(error => {
-        console.error('Request failed:', error);
-    });
+
+    } catch (err) {
+        console.error('Error getting data:', err.message);
+        document.getElementById("wait").innerHTML = " Error loading data. ";
+    }
+}
+
+
+loadData();
