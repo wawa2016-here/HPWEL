@@ -1,3 +1,8 @@
+const { data, error } = await supabase
+    .from('server2016')
+    .insert([
+        { custom_column: 'value' }
+    ]);
 fetch('script2.js')
     .then(response => {
         if (!response.ok) {
