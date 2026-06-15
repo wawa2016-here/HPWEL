@@ -7,8 +7,9 @@ fetch('script2.js')
     })
     .then(data => {
         console.log(data);
+        
+        document.getElementById("wait").innerHTML = " " + JSON.stringify(data) + " "; 
     })
     .catch(error => {
         console.error('Request failed:', error);
     });
-document.getElementById("wait").innerHTML = " " + data + " "; 
