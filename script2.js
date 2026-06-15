@@ -1,9 +1,6 @@
-const { data, error } = await supabase
-    .from('server2016') // Put your custom table name here
-    .insert([
-        { custom_column: 'value' }
-    ]);
-
+const SUPABASE_URL = "https://supabase.co";
+const SUPABASE_ANON_KEY = "your-actual-long-anon-public-key";
+const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 async function sendData() {
     const myData = {
       PI:3.14159
